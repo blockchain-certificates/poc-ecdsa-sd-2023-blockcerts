@@ -1,0 +1,24 @@
+{
+  "name": "poc-ecdsa-sd-blockcerts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sign": "tsx src/sign.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@blockcerts/schemas": "^3.4.2",
+    "@digitalbazaar/ecdsa-multikey": "^1.6.0",
+    "@digitalbazaar/ecdsa-sd-2023-cryptosuite": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "tslib": "^2.6.2",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  }
+}
