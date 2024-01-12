@@ -1,7 +1,12 @@
-import { preloadedContexts } from '@blockcerts/schemas';
+import blockcertsSchemas from '@blockcerts/schemas';
+import dataIntegrityV2Context from './data-integrity-v2-context.json';
+
+const { preloadedContexts } = blockcertsSchemas;
 interface DocumentsToPreloadMap {
   [url: string]: any; // any being a context document or did document
 }
+
+preloadedContexts['https://w3id.org/security/data-integrity/v2'] = dataIntegrityV2Context;
 
 export default function generateDocumentLoader (documentsToPreload: DocumentsToPreloadMap[] = []) {
   documentsToPreload.forEach(document => {

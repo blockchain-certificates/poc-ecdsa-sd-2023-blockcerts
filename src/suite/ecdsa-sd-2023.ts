@@ -1,4 +1,11 @@
 import * as EcdsaMultikey from '@digitalbazaar/ecdsa-multikey';
+import * as ecdsaSd2023Cryptosuite from '@digitalbazaar/ecdsa-sd-2023-cryptosuite';
+import {DataIntegrityProof} from '@digitalbazaar/data-integrity';
+import jsigs from 'jsonld-signatures';
+import generateDocumentLoader from "../contexts/generateDocumentLoader";
+
+const {createSignCryptosuite} = ecdsaSd2023Cryptosuite;
+const {purposes: {AssertionProofPurpose}} = jsigs;
 
 async function getKeyPair () {
   const publicKeyMultibase = 'zDnaekGZTbQBerwcehBSXLqAg6s55hVEBms1zFy89VHXtJSa9';
@@ -20,6 +27,19 @@ async function getKeyPair () {
 export class EcdsaSd2023 {
   async sign (document) {
     const keyPair = await getKeyPair();
-    console.log(keyPair);
+    // console.log(keyPair);
+
+    const suite = new DataIntegrityProof({
+      signer: keyPair.signer(),
+      cryptosuite: createSignCryptosuite()
+    });
+
+    const signedCredential = await jsigs.sign(document, {
+      suite,
+      purpose: new AssertionProofPurpose(),
+      documentLoader: generateDocumentLoader()
+    });
+
+    console.log(signedCredential);
   }
 }

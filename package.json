@@ -12,8 +12,10 @@
   "description": "",
   "dependencies": {
     "@blockcerts/schemas": "^3.4.2",
+    "@digitalbazaar/data-integrity": "^2.0.0",
     "@digitalbazaar/ecdsa-multikey": "^1.6.0",
-    "@digitalbazaar/ecdsa-sd-2023-cryptosuite": "^3.1.0"
+    "@digitalbazaar/ecdsa-sd-2023-cryptosuite": "^3.1.0",
+    "jsonld-signatures": "^11.2.1"
   },
   "devDependencies": {
     "@types/node": "^20.11.0",
