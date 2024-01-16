@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sign": "tsx src/sign.ts"
+    "sign": "tsx src/sign.ts",
+    "verify": "tsx src/verify.ts --path=./src/certs/signed/signed-credential.json",
+    "verify:derived": "tsx src/verify.ts --path=./src/certs/signed/derived-credential.json"
   },
   "author": "",
   "license": "ISC",
