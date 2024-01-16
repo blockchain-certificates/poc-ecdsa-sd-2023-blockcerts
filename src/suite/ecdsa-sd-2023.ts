@@ -3,10 +3,9 @@ import * as ecdsaSd2023Cryptosuite from '@digitalbazaar/ecdsa-sd-2023-cryptosuit
 import {DataIntegrityProof} from '@digitalbazaar/data-integrity';
 import jsigs from 'jsonld-signatures';
 import generateDocumentLoader from "../contexts/generateDocumentLoader";
-import writeFile from "../helpers/writeFile";
 import prettyFormat from "../helpers/prettyFormat";
 
-const { createSignCryptosuite, createVerifyCryptosuite } = ecdsaSd2023Cryptosuite;
+const { createSignCryptosuite, createVerifyCryptosuite, createDiscloseCryptosuite } = ecdsaSd2023Cryptosuite;
 const {purposes: {AssertionProofPurpose}} = jsigs;
 
 async function getKeyPair () {
@@ -57,5 +56,21 @@ export class EcdsaSd2023 {
     });
 
     console.log(prettyFormat(result));
+  }
+
+  async derive (document) {
+    const suite = new DataIntegrityProof({
+      // disclose only the `credentialSubject.id` and any IDs and types in its
+      // JSON path
+      cryptosuite: createDiscloseCryptosuite(/* nothing selectively disclosed */)
+    });
+
+    const derivedCredential = await jsigs.derive(document, {
+      suite,
+      purpose: new AssertionProofPurpose(),
+      documentLoader: generateDocumentLoader()
+    });
+
+    return derivedCredential;
   }
 }
