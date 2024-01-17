@@ -12,7 +12,8 @@ export default function generateDocumentLoader (documentsToPreload: DocumentsToP
   documentsToPreload.forEach(document => {
     const key = Object.keys(document)[0];
     preloadedContexts[key] = document[key];
-  })
+  });
+
   const customLoader = function (url): any {
     if (url in preloadedContexts) {
       return {

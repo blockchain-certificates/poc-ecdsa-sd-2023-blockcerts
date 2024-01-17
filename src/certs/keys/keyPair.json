@@ -1,0 +1,11 @@
+{
+  "@context": "https://w3id.org/security/multikey/v1",
+  "type": "Multikey",
+  "id": "did:key:zDnaeRX3M5E8EEob647g7GB52MYiGPXNDPUSgxBqeP2y7R5KM#zDnaeRX3M5E8EEob647g7GB52MYiGPXNDPUSgxBqeP2y7R5KM",
+  "controller": "did:key:zDnaeRX3M5E8EEob647g7GB52MYiGPXNDPUSgxBqeP2y7R5KM",
+  "publicKey": {},
+  "secretKey": {},
+  "publicKeyMultibase": "zDnaeRX3M5E8EEob647g7GB52MYiGPXNDPUSgxBqeP2y7R5KM",
+  "secretKeyMultibase": "z42toF4WSwCGqw1f6o5mUU6CiydvS41j33Cx7Ba6ALYip2kM",
+  "keyAgreement": false
+}
