@@ -14,7 +14,7 @@ async function deriveProof () {
   const suite = new EcdsaSd2023();
   const derivedCredential = await suite.derive(signedDocument, {
     mandatoryPointers: [],
-    selectivePointers: ['/credentialSubject/name']
+    selectivePointers: []
   });
   console.log(JSON.stringify(derivedCredential, null, 2));
   writeFile(
